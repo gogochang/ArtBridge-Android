@@ -2,4 +2,7 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
+
+    // Compose Compiler Gradle plugin 추가
+    alias(libs.plugins.compose.compiler) apply false
 }

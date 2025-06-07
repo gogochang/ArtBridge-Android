@@ -4,10 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.gogochang.artbridge.presentation.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         // 일정 시간 지연 후 실행하기 위한 코드
         Handler(Looper.getMainLooper()).postDelayed({
             // 일정 시간이 지나면 MainActivity로 이동
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
 
             // 이전 키를 눌렀을 때 스플래시 스크린 화면으로 이동을 방지하기 위해
