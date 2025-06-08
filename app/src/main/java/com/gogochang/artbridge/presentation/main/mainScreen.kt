@@ -29,6 +29,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.Preview
 import com.gogochang.artbridge.R
 
 @Composable
@@ -123,7 +125,7 @@ fun TopBar() {
 
 @Composable
 fun BottomBar(selected: String, onTabSelected: (String) -> Unit) {
-    val tabs = listOf("홈", "구인/구직", "커뮤니티", "프로필")
+    val tabs = listOf("홈", "커뮤니티", "브릿지", "소식", "프로필")
 
     NavigationBar {
         tabs.forEach { tab ->
@@ -134,8 +136,9 @@ fun BottomBar(selected: String, onTabSelected: (String) -> Unit) {
                     Icon(
                         imageVector = when (tab) {
                             "홈" -> Icons.Default.Home
-                            "구인/구직" -> Icons.Default.Star
-                            "커뮤니티" -> Icons.Default.Send
+                            "커뮤니티" -> Icons.Default.Star
+                            "브릿지" -> Icons.Default.Send
+                            "소식" -> Icons.Default.MailOutline
                             "프로필" -> Icons.Default.Person
                             else -> Icons.Default.Home
                         },
@@ -176,7 +179,7 @@ fun CategorySection() {
                         CategoryChip(name = item)
                     }
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(20.dp))
                 Row {
                     secondRowItems.forEach { item ->
                         CategoryChip(name = item)
@@ -189,14 +192,37 @@ fun CategorySection() {
 
 @Composable
 fun CategoryChip(name: String) {
-    Box(
+    Column(
         modifier = Modifier
-            .padding(end = 8.dp)
-            .size(64.dp)
-            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.2f), RoundedCornerShape(16.dp))
-            .padding(horizontal = 12.dp, vertical = 8.dp)
+            .padding(end = 20.dp)
+            .width(64.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = name, fontSize = 14.sp)
+        Box(
+            modifier = Modifier
+                .size(64.dp)
+                .background(Color.LightGray.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
+        ) {
+
+            Image(
+                painter = painterResource(id = R.drawable.icon_violin),
+                contentDescription = null,
+                modifier = Modifier.size(72.dp),  // Box보다 크게 설정
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        Text(
+            text = name,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            fontFamily = SuitFontFamily,
+            color = Color.DarkGray,
+            modifier = Modifier
+                .padding(horizontal = 4.dp, vertical = 2.dp)
+        )
     }
 }
 
@@ -317,4 +343,10 @@ fun CommunityPostSection(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CategoryChipPreview() {
+    mainScreen()
 }
