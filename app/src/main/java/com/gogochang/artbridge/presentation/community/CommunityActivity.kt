@@ -1,21 +1,19 @@
-package com.gogochang.artbridge.presentation.main
+package com.gogochang.artbridge.presentation.community
 
-import com.gogochang.artbridge.ui.theme.ArtBridgeTheme
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.gogochang.artbridge.R
 
-class MainActivity : AppCompatActivity() {
+class CommunityActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_community)
         setContent {
-            ArtBridgeTheme {
-                MainScreen()
-            }
+            CommunityScreen()
         }
     }
 }
